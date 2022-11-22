@@ -10,6 +10,7 @@ export class AnimalService {
       name: 'Mon animal du service',
       species: 'chat',
       veterinarian: 'Panoramix',
+      email: 'email@example.com',
     };
   }
 }
