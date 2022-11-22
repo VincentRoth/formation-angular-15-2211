@@ -41,6 +41,7 @@ export class AnimalService {
       species: 'chat',
       veterinarian: 'Panoramix',
       email: 'email@example.com',
+      phoneNumber: '06.12.34.56.78',
     };
   }
 }
