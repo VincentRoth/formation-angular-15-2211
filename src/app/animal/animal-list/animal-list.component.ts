@@ -19,9 +19,10 @@ export class AnimalListComponent implements OnInit {
 
   ngOnInit(): void {
     this.animals = this.animalService.getAll();
-    console.log(
-      this.animals[0].phoneNumber,
-      this.phonePipe.transform(this.animals[0].phoneNumber)
-    );
+  }
+
+  deleteItem(animal: Animal): void {
+    const index = this.animals.indexOf(animal);
+    this.animals.splice(index, 1);
   }
 }
