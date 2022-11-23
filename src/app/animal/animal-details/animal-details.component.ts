@@ -10,26 +10,17 @@ import { AnimalService } from '../../shared/api/animal.service';
   templateUrl: './animal-details.component.html',
   styleUrls: ['./animal-details.component.scss'],
 })
-export class AnimalDetailsComponent implements OnInit, OnDestroy {
-  animal: Animal;
-  private subscription: Subscription;
+export class AnimalDetailsComponent implements OnInit {
+  animal$: Observable<Animal>;
 
   constructor(
     private animalService: AnimalService,
     private activatedRoute: ActivatedRoute
   ) {}
 
-  ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
-  }
-
   ngOnInit(): void {
-    this.subscription = this.activatedRoute.paramMap
-      .pipe(
-        switchMap((params) => this.animalService.get(Number(params.get('id'))))
-      )
-      .subscribe((data) => {
-        this.animal = data;
-      });
+    this.animal$ = this.activatedRoute.paramMap.pipe(
+      switchMap((params) => this.animalService.get(Number(params.get('id'))))
+    );
   }
 }
