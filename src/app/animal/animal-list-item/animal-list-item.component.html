@@ -1,2 +1,3 @@
 {{ model.name }}, {{ model.species }}
+<a [routerLink]="['animals', model.id]">Voir Détail</a>
 <button (click)="onDelete()">Supprimer</button>
