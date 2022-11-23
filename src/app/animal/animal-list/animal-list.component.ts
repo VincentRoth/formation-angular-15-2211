@@ -2,7 +2,6 @@ import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { Animal } from '../../shared/api/animal';
 import { AnimalService } from '../../shared/api/animal.service';
-import { PhonePipe } from '../../shared/phone.pipe';
 
 @Component({
   selector: 'app-animal-list',
@@ -12,17 +11,21 @@ import { PhonePipe } from '../../shared/phone.pipe';
 export class AnimalListComponent implements OnInit {
   animals: Animal[];
 
-  constructor(
-    private animalService: AnimalService,
-    private phonePipe: PhonePipe
-  ) {}
+  constructor(private animalService: AnimalService) {}
 
   ngOnInit(): void {
-    this.animals = this.animalService.getAll();
+    this.refreshData();
   }
 
   deleteItem(animal: Animal): void {
-    const index = this.animals.indexOf(animal);
-    this.animals.splice(index, 1);
+    this.animalService.delete(animal.id).subscribe(() => {
+      this.refreshData();
+    });
+  }
+
+  private refreshData(): void {
+    this.animalService.getAll().subscribe((data) => {
+      this.animals = data;
+    });
   }
 }
