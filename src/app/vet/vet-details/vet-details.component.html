@@ -1,0 +1,6 @@
+<p *ngIf="vet$ | async as vet; else loading">
+  Prénom : {{ vet.firstName }}<br />
+  Nom : {{ vet.lastName }}
+</p>
+
+<ng-template #loading>Chargement...</ng-template>
