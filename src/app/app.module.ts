@@ -5,17 +5,10 @@ import { AnimalModule } from './animal/animal.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { VetModule } from './vet/vet.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    AnimalModule,
-    HttpClientModule,
-    VetModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, AnimalModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
