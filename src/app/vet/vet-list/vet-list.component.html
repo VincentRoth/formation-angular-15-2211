@@ -1,7 +1,10 @@
+<a routerLink="form">Nouveau véto</a>
+
 <ul>
   <li *ngFor="let vet of vets">
     {{ vet.lastName }}
     <a [routerLink]="['/vets', vet.id]">Voir Détail</a>
+    <a [routerLink]="['/vets', 'form', vet.id]">Modifier</a>
     <button (click)="deleteItem(vet)">Supprimer</button>
   </li>
 </ul>

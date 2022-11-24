@@ -1,0 +1,22 @@
+<form
+  (ngSubmit)="onSubmit()"
+  [formGroup]="vetFormGroup"
+  *ngIf="vetFormGroup"
+  #ngForm="ngForm"
+>
+  <label for="firstName">Prénom</label>
+  <input id="firstName" formControlName="firstName" />
+  <p *ngIf="ngForm.submitted && vetFormGroup.hasError('required', 'firstName')">
+    Ce champ est requis.
+  </p>
+  <br />
+
+  <label for="lastName">Nom</label>
+  <input id="lastName" formControlName="lastName" />
+  <p *ngIf="ngForm.submitted && vetFormGroup.hasError('required', 'lastName')">
+    Ce champ est requis.
+  </p>
+  <br />
+
+  <button type="submit">Envoyer</button>
+</form>
