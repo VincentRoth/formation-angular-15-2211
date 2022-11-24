@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Right } from '../shared/auth/current-user.service';
 import { RightGuard } from '../shared/auth/right.guard';
 import { AnimalDetailsComponent } from './animal-details/animal-details.component';
+import { AnimalFormComponent } from './animal-form/animal-form.component';
 import { AnimalListComponent } from './animal-list/animal-list.component';
 import { AnimalComponent } from './animal.component';
 
@@ -12,6 +13,8 @@ const routes: Routes = [
     component: AnimalComponent,
     children: [
       { path: '', component: AnimalListComponent },
+      { path: 'form', component: AnimalFormComponent },
+      { path: 'form/:id', component: AnimalFormComponent },
       {
         path: ':id',
         component: AnimalDetailsComponent,

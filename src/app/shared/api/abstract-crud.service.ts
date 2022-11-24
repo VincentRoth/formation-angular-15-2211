@@ -12,11 +12,11 @@ export abstract class AbstractCrudService<T extends { id?: number }> {
     return this.httpClient.get<T>(`${this.endpoint}/${id}`);
   }
 
-  post(data: T): Observable<T> {
+  create(data: T): Observable<T> {
     return this.httpClient.post<T>(this.endpoint, data);
   }
 
-  put(data: T): Observable<void> {
+  update(data: T): Observable<void> {
     return this.httpClient.put<void>(`${this.endpoint}/${data.id}`, data);
   }
 
