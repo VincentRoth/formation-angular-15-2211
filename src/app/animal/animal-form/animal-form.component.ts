@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { formatCurrency } from '@angular/common';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Animal } from '../../shared/api/animal';
@@ -11,6 +13,7 @@ import { AnimalService } from '../../shared/api/animal.service';
 })
 export class AnimalFormComponent implements OnInit {
   animal: Animal;
+  @ViewChild('animalForm') animalForm: NgForm;
 
   constructor(
     private animalService: AnimalService,
@@ -35,6 +38,10 @@ export class AnimalFormComponent implements OnInit {
   }
 
   onSubmit(): void {
+    if (this.animalForm.form.invalid) {
+      return;
+    }
+
     let save$: Observable<Animal | void>;
 
     if (this.animal.id) {

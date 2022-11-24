@@ -1,12 +1,28 @@
-<p>animal-form works!</p>
-
-<form (ngSubmit)="onSubmit()" *ngIf="animal">
+<form (ngSubmit)="onSubmit()" *ngIf="animal" #animalForm="ngForm">
   <label for="name">Nom</label>
-  <input id="name" [(ngModel)]="animal.name" name="name" />
+  <input
+    id="name"
+    [(ngModel)]="animal.name"
+    name="name"
+    required
+    #nameCtrl="ngModel"
+  />
+  <p *ngIf="animalForm.submitted && nameCtrl.hasError('required')">
+    Ce champ est requis.
+  </p>
   <br />
 
   <label for="name">Espèce</label>
-  <input id="species" [(ngModel)]="animal.species" name="species" />
+  <input
+    id="species"
+    [(ngModel)]="animal.species"
+    name="species"
+    required
+    #speciesCtrl="ngModel"
+  />
+  <p *ngIf="animalForm.submitted && speciesCtrl.hasError('required')">
+    Ce champ est requis.
+  </p>
   <br />
 
   <label for="veterinarian">Vétérinaire</label>
@@ -14,11 +30,25 @@
     id="veterinarian"
     [(ngModel)]="animal.veterinarian"
     name="veterinarian"
+    required
+    #vetCtrl="ngModel"
   />
+  <p *ngIf="animalForm.submitted && vetCtrl.hasError('required')">
+    Ce champ est requis.
+  </p>
   <br />
 
   <label for="email">Email</label>
-  <input id="email" [(ngModel)]="animal.email" name="email" />
+  <input
+    id="email"
+    [(ngModel)]="animal.email"
+    name="email"
+    email
+    #emailCtrl="ngModel"
+  />
+  <p *ngIf="animalForm.submitted && emailCtrl.hasError('email')">
+    N'est pas un email valide.
+  </p>
   <br />
 
   <label for="phoneNumber">Téléphone</label>
