@@ -1,4 +1,11 @@
-{{ model.name }}, {{ model.species }}
-<a [routerLink]="['/animals', model.id]">Voir Détail</a>
-<a [routerLink]="['/animals', 'form', model.id]">Modifier</a>
-<button (click)="onDelete()">Supprimer</button>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ model.name }}</mat-card-title>
+    <mat-card-subtitle>{{ model.species }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions>
+    <a mat-button [routerLink]="['/animals', model.id]">Voir Détail</a>
+    <a mat-button [routerLink]="['/animals', 'form', model.id]">Modifier</a>
+    <button mat-button (click)="onDelete()">Supprimer</button>
+  </mat-card-actions>
+</mat-card>

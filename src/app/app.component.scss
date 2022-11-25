@@ -1,7 +1,8 @@
-h1 {
-  background-color: aquamarine;
-}
-
-:host {
-  color: black;
+mat-toolbar {
+  h1 {
+    margin: 0;
+  }
+  a {
+    color: white;
+  }
 }

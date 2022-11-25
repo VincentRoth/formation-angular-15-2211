@@ -4,19 +4,31 @@
   *ngIf="vetFormGroup"
   #ngForm="ngForm"
 >
-  <label for="firstName">Prénom</label>
-  <input id="firstName" formControlName="firstName" />
-  <p *ngIf="ngForm.submitted && vetFormGroup.hasError('required', 'firstName')">
-    Ce champ est requis.
-  </p>
-  <br />
+  <mat-form-field appearance="fill">
+    <mat-label>Prenom</mat-label>
+    <input matInput required formControlName="firstName" />
+    <mat-error
+      *ngIf="
+        (ngForm.submitted || vetFormGroup.get('firstName').touched) &&
+        vetFormGroup.hasError('required', 'firstName')
+      "
+    >
+      Ce champ est requis.
+    </mat-error>
+  </mat-form-field>
 
-  <label for="lastName">Nom</label>
-  <input id="lastName" formControlName="lastName" />
-  <p *ngIf="ngForm.submitted && vetFormGroup.hasError('required', 'lastName')">
-    Ce champ est requis.
-  </p>
-  <br />
+  <mat-form-field appearance="fill">
+    <mat-label>Nom</mat-label>
+    <input matInput required formControlName="lastName" />
+    <mat-error
+      *ngIf="
+        (ngForm.submitted || vetFormGroup.get('lastName').touched) &&
+        vetFormGroup.hasError('required', 'lastName')
+      "
+    >
+      Ce champ est requis.
+    </mat-error>
+  </mat-form-field>
 
-  <button type="submit">Envoyer</button>
+  <button mat-raised-button color="primary" type="submit">Envoyer</button>
 </form>

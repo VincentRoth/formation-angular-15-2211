@@ -1,10 +1,7 @@
 <a routerLink="form">Nouvel animal</a>
 
-<ul>
-  <li *ngFor="let animal of animals">
-    <app-animal-list-item
-      [model]="animal"
-      (deletion)="deleteItem($event)"
-    ></app-animal-list-item>
-  </li>
-</ul>
+<app-animal-list-item
+  *ngFor="let animal of animals"
+  [model]="animal"
+  (deletion)="deleteItem($event)"
+></app-animal-list-item>

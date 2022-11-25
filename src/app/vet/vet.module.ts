@@ -7,6 +7,9 @@ import { VetListComponent } from './vet-list/vet-list.component';
 import { VetDetailsComponent } from './vet-details/vet-details.component';
 import { VetFormComponent } from './vet-form/vet-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -15,6 +18,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     VetDetailsComponent,
     VetFormComponent,
   ],
-  imports: [CommonModule, VetRoutingModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    VetRoutingModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+  ],
 })
 export class VetModule {}
